@@ -1,0 +1,39 @@
+<?php 
+
+class Login extends BaseController
+{
+    public function index(){
+        parent::view('login/index');
+    }
+    public function proses(){
+        // coding sementara
+        $data = $_POST;
+
+        $db = new Database();
+        $db->query (
+            "SELECT * FROM users WHERE username='{$data['username']}'"
+        );
+        $user = $db->single();
+
+        if($user && $user['password'] === md5($data['password'])){
+            unset($user['password']);
+            $_SESSION['user'] = $user;
+            return parent::redirect('home', 'index');
+        } 
+        else {
+            $_SESSION['flash'] = [
+                'type' => 'negative',
+                'title' => 'Login Gagal',
+                'message' => 'Username atau Password Salah'
+            ];
+            return parent::redirect('login', 'index');
+        }
+    }
+
+    public function logout()
+    {
+        unset($_SESSION['user']);
+        session_destroy();
+        return parent::redirect('home', 'index');
+    }
+}
