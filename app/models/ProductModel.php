@@ -24,4 +24,28 @@ class ProductModel extends BaseModel
         // kembalikan jumlah data yang tersimpan ke controller
         return $this->db->count();
     }
+    // metode update produk
+    public function updateProduct($data, $id)
+    {
+        // query SQL
+        $query = "UPDATE $this->table SET
+                        kode=:kode,
+                        nama=:nama,
+                        deskripsi=:deskripsi,
+                        harga=:harga,
+                        stock=:stock
+                        WHERE id=:id";
+        // data binding untuk mencegah SQL Injection
+        $this->db->query($query);
+        $this->db->bind('kode', $data['inp_kode']);
+        $this->db->bind('nama', $data['inp_nama']);
+        $this->db->bind('deskripsi', $data['inp_desc']);
+        $this->db->bind('harga', $data['inp_harga']);
+        $this->db->bind('stock', $data['inp_stock']);
+        $this->db->bind('id', $id);
+        // eksekusi query
+        $this->db->execute();
+        // kembalikan jumlah data yang diubah ke controller
+        return $this->db->count();
+    }
 }
