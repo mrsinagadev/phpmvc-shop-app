@@ -5,6 +5,8 @@
         </div>
         <div class="ui segment">
             <!-- konten -->
+            <?php include_once('../app/views/components/flash.php') ?>
+            
             <table class="ui table">
                 <thead>
                     <tr>
@@ -47,7 +49,7 @@
                             </td>
                             <td class="center aligned collapsing">
                                 <a href="<?= BASE_URL ?>/product/edit/<?= $product['id'] ?>" class="ui basic button mini">Edit</a>
-                                <a href="<?= BASE_URL ?>/product/delete/<?= $product['id'] ?>" class="ui red button mini" onclick="return confirm('Yakin ingin menghapus <?= $product['kode'] ?>?')">Delete</a>
+                                <a href="<?= BASE_URL ?>/product/destroy/<?= $product['id'] ?>" class="ui red button mini" onclick="return confirm('Yakin ingin menghapus <?= $product['kode'] ?>?')">Delete</a>
                             </td>
                         </tr>
                     <?php endforeach ?>
