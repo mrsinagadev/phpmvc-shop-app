@@ -5,29 +5,25 @@
         </div>
         <div class="ui segment">
             <!-- konten -->
-            <form action="<?= BASE_URL ?>/product/store" method="post" class="ui form">
+            <form action="<?= BASE_URL ?>/user/store" method="post" class="ui form">
                 <div class="field">
-                    <label>Kode Produk</label>
-                    <input type="text" name="inp_kode">
+                    <label>Username</label>
+                    <input type="text" name="inp_user">
                 </div>
                 <div class="field">
-                    <label>Nama Produk</label>
-                    <input type="text" name="inp_nama">
+                    <label>Password</label>
+                    <input type="Password" name="inp_pass">
                 </div>
                 <div class="field">
-                    <label>Harga Produk</label>
-                    <input type="number" min=0 name="inp_harga">
+                    <label for="role">Role</label>
+                         <div class="class input">
+                          <select name="inp_role" >
+                            <option value="admin">Admin</option>
+                            <option value="customer">Customer</option>
+                          </select>
+                    </div>
                 </div>
-                <div class="field">
-                    <label>Stock Produk</label>
-                    <input type="number" min=1 name="inp_stock">
-                </div>
-                <div class="field">
-                    <label>Deskripsi Produk</label>
-                    <textarea name="inp_desc" rows="2"></textarea>
-                </div>
-                <div class="ui divider"></div>
-                <div class="field">
+                    <div class="field">
                     <input type="submit" value="Simpan" class="ui black button">
                 </div>
             </form>
