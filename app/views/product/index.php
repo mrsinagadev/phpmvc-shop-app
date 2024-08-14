@@ -1,7 +1,7 @@
 <div class="ui container">
     <div class="ui segments">
         <div class="ui segment">
-            <h4>List Produk</h4>
+            <h4 style="text-align: center; font-size:23px;">List Produk</h4>
         </div>
         <div class="ui segment">
             <!-- konten -->

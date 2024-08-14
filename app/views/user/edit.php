@@ -9,10 +9,10 @@
                     <label>Username</label>
                     <input type="text" name="inp_user" value="<?= $data['user']['username'] ?>" >
                 </div>
-                <!-- <div class="field">
+                <div class="field">
                     <label>Password</label>
                     <input type="Password" name="inp_pass" value="<?= $data['user']['password'] ?>">
-                </div> -->
+                </div>
                 <div class="field">
                     <label for="role">Role</label>
                          <div class="class input">
