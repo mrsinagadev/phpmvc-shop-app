@@ -12,20 +12,26 @@ class UserModel extends BaseModel{
     public function storeUser($data)
     {
         // query SQL
-        $query = "INSERT INTO $this->table (
+$query = "INSERT INTO $this->table (
     username, password, role
-    ) VALUES (
+) VALUES (
     :username, :password, :role
-    )";
-        // data binding mencegah SQL Injection dari form
-        $this->db->query($query);
-        $this->db->bind('username', $data['inp_user']);
-        $this->db->bind('password', $data['inp_pass']);
-        $this->db->bind('role', $data['inp_role']);
-        // eksekusi query
-        $this->db->execute();
-        // kembalikan jumlah data yang tersimpan ke controller
-        return $this->db->count();
+)";
+
+// Hash password menggunakan password_hash
+$hashedPassword = password_hash($data['inp_pass'], PASSWORD_BCRYPT);
+
+// data binding mencegah SQL Injection dari form
+$this->db->query($query);
+$this->db->bind('username', $data['inp_user']);
+$this->db->bind('password', $hashedPassword); // Menggunakan password yang sudah di-hash
+$this->db->bind('role', $data['inp_role']);
+
+// eksekusi query
+$this->db->execute();
+
+// kembalikan jumlah data yang tersimpan ke controller
+return $this->db->count();
     }
    
     public function updateUser($data, $id)
@@ -36,10 +42,13 @@ class UserModel extends BaseModel{
                         password=:password,
                         role=:role
                         WHERE id=:id";
+
+$hashedPassword = password_hash($data['inp_pass'], PASSWORD_BCRYPT);
+
         // data binding untuk mencegah SQL Injection
         $this->db->query($query);
         $this->db->bind('username', $data['inp_user']);
-        $this->db->bind('password', $data['inp_pass']);
+        $this->db->bind('password', $hashedPassword);
         $this->db->bind('role', $data['inp_role']);
         $this->db->bind('id', $id);
         // eksekusi query

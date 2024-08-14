@@ -1,9 +1,10 @@
-<div class="ui container" style="margin-top: 5rem; display: flex; justify-content: center; max-width: 60%! important">
-
-	<?php include_once('../app/views/components/flash.php') ?>
-
-	<table class="ui table">
-		<thead>
+<div class="ui container">
+			<div class="ui segment">
+            <h4 style="text-align: center; font-size:23px;">List User</h4>
+            <!-- konten -->
+            <?php include_once('../app/views/components/flash.php') ?>
+				<table class="ui table">
+			<thead>
 			<tr>
 				<th>No</th>
 				<th>Username</th>
@@ -33,4 +34,5 @@
 			<?php endforeach; ?>
 		</tbody>
 	</table>
+	</div>
 </div>
